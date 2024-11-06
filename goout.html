@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Response</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            height: 100vh;
+        }
+
+        #response {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #gif {
+            margin-top: 20px;
+            display: none;
+            width: 400px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Would you like to go out with me this weekend?</h2>
+
+    <button id="yesButton" onclick="handleYes()">Yes</button>
+    <button id="noButton" onclick="handleNo()">No</button>
+
+    <p id="response"></p>
+    <img id="gif" src="https://gifman.net/wp-content/uploads/2019/06/bebe-dancando-01.gif" alt="Excited Baby GIF" />
+
+    <script>
+        // Função que lida com a opção "Yes"
+        function handleYes() {
+            let response = document.getElementById('response');
+            let gif = document.getElementById('gif');
+            let yesButton = document.getElementById('yesButton');
+            let noButton = document.getElementById('noButton');
+
+            // Exibir a resposta e o GIF
+            response.textContent = "I'm happy xD! I'll plan a fun itinerary...";
+            gif.style.display = "block";
+            gif.style.position = "absolute";
+            gif.style.top = "50%";
+            gif.style.left = "50%";
+            gif.style.transform = "translate(-50%, -50%)";
+            gif.style.width = "500px"; // Aumentar o tamanho do GIF
+
+            // Esconder os botões
+            yesButton.style.display = "none";
+            noButton.style.display = "none";
+        }
+
+        // Função que lida com a opção "No"
+        function handleNo() {
+            let noButton = document.getElementById('noButton');
+            let response = document.getElementById('response');
+            let gif = document.getElementById('gif');
+
+            // Esconder a resposta e o GIF
+            response.textContent = "";
+            gif.style.display = "none";
+
+            // Mover o botão "No" para um local aleatório na tela
+            let randomX = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            let randomY = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.position = "absolute";
+            noButton.style.left = randomX + "px";
+            noButton.style.top = randomY + "px";
+        }
+    </script>
+</body>
+</html>
